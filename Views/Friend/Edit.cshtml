@@ -1,0 +1,23 @@
+﻿@model FriendModel
+
+<h1>Edit Friend</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="FriendID"></label>
+        <input asp-for="FriendID" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="FriendName"></label>
+        <input asp-for="FriendName" class="form-control" />
+        <span asp-validation-for="FriendName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Place"></label>
+        <input asp-for="Place" class="form-control" />
+        <span asp-validation-for="Place" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<a asp-action="Index">Back to List</a>

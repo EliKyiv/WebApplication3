@@ -1,0 +1,36 @@
+﻿@model List<FriendModel>
+
+<h1>Friends</h1>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Friend ID</th>
+                <th>Friend Name</th>
+                <th>Place</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var friend in Model)
+            {
+                <tr>
+                    <td>@friend.FriendID</td>
+                    <td>@friend.FriendName</td>
+                    <td>@friend.Place</td>
+                    <td><a href="@Url.Action("Edit", new { id = friend.FriendID })">Edit</a></td>
+                    <td><a href="@Url.Action("Delete", new { id = friend.FriendID })">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No friends found.</p>
+}
+
+<a asp-action="Create">Add new friend</a>

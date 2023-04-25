@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication3.Models.FriendModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Create New</a>
+        <a asp-action="Edit">Edit</a>
+        <a asp-action="Details">Details</a>
+        <a asp-action="Delete">Delete</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FriendID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FriendName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Place)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FriendName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </td>
+                    <td>
+                        <a asp-action="Create" asp-route-id="@item.FriendID">Create</a> |
+                        <a asp-action="Edit" asp-route-id="@item.FriendID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.FriendID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.FriendID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
