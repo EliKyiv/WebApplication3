@@ -1,57 +1,36 @@
-﻿@model IEnumerable<WebApplication3.Models.FriendModel>
+@model List<FriendModel>
 
-@{
-    Layout = null;
-}
+<h1>Friends</h1>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        <a asp-action="Create">Create New</a>
-        <a asp-action="Edit">Edit</a>
-        <a asp-action="Details">Details</a>
-        <a asp-action="Delete">Delete</a>
-    </p>
+@if (Model.Count > 0)
+{
     <table class="table">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FriendID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FriendName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Place)
-                </th>
+                <th style="background-color:white;"><h6>Friend ID</h6><img src="https://img.icons8.com/?size=1x&id=79676&format=png" width="32"></th>
+                <th><h6>Friend Name</h6></th>
+                <th style="background-color:white;"><h6>Place</h6><img src="https://img.icons8.com/?size=1x&id=vjBZgKkqLr8y&format=png" width="32"></th>
                 <th></th>
+                <th style="background-color:white;"><img src="https://img.icons8.com/?size=1x&id=102315&format=png" width="32"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var friend in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FriendName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Place)
-                    </td>
-                    <td>
-                        <a asp-action="Create" asp-route-id="@item.FriendID">Create</a> |
-                        <a asp-action="Edit" asp-route-id="@item.FriendID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.FriendID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.FriendID">Delete</a>
-                    </td>
+                    <td style="background-color:white;">@friend.FriendID</td>
+                    <td>@friend.FriendName</td>
+                    <td style="background-color:white;">@friend.Place</td>
+                    <td><a href="@Url.Action("Edit", new { id = friend.FriendID })">Edit</a></td>
+                    <td style="background-color:white;"><a href="@Url.Action("Delete", new { id = friend.FriendID })">Delete</a></td>
                 </tr>
             }
         </tbody>
     </table>
-</body>
-</html>
+}
+else
+{
+    <p>No friends found.</p>
+}
+
+<p align="center"><a asp-action="Create" class="button">Add new friend</a></p>
